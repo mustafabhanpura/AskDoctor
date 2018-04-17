@@ -1,0 +1,36 @@
+{% extends "appoint/base.html" %}
+
+<!--{% for x,y in dict.items %}
+ {{x}}<br />
+{% for a in y %}
+
+    {{a.reply}}
+    {{a.report_image}}<br />
+
+{% endfor %}
+<br /><br />
+
+{% endfor %}-->
+
+{% block content %}
+
+<div class="position">
+    <div class="row">
+      {% for x,y in dict.items %}
+        {% if y  %}
+      <div class="col-sm-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ x.first_name }} {{ x.last_name }}</h5>
+            {% for a in y %}
+            <p class="card-text">{{ a.reply }}</p>
+            {% endfor %}
+            <a href="{%url 'appoint:id' forloop.counter  %}" class="btn btn-primary">Open</a>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+    {% endfor %}
+    </div>
+</div>
+{% endblock content %}

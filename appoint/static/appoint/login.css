@@ -1,0 +1,88 @@
+body {
+	margin: 0;
+	padding: 0;
+	background: url('images/clinic2.jpg') no-repeat center center fixed;
+	background-size: cover;
+	height: 100%;
+}
+
+.nav {
+	flex-wrap: nowrap;
+}
+
+.nav-tabs {
+	justify-content: center;
+}
+
+.nav-tabs .nav-item .nav-link {
+	display: inline-flex;
+	border-radius: 15px 15px 0 0;
+	font-size: 20px;
+	text-align: center;
+	color: #000;
+}
+
+.tab-content .tab-pane {
+	height: auto;
+	background-color: white;
+}
+
+.login-page {
+	height: auto;
+	justify-content: center;
+	align-items: center;
+	padding: 5%;
+	width: 550px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10%;
+	margin-bottom: 10%;
+	border: 3px solid #f1f1f1;
+}
+
+.submit {
+	width: 100%;
+	font-size: 20px;
+	background-color: red;
+}
+
+.submit:hover {
+    opacity: 0.8;
+}
+
+.register a {
+	font-size: 18px;
+	color: #2c165e;
+	text-decoration: none;
+	float: left;
+	margin-right: 0;
+}
+
+h2 {
+	text-align: center;
+}
+
+form {
+	padding: 10%;	
+}
+
+label {
+	font-size: 20px;
+}
+
+input[type=text], input[type=password], input[type=date], input[type=tel] {
+    width: 100%;
+    font-size: 18px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.select-button {
+	width: 70%;
+	color: black;
+	background-color: white;
+}

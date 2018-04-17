@@ -1,0 +1,23 @@
+{% extends "appoint/base_login.html" %}
+
+{% block content %}
+<div id="doctor">
+	<h2>Welcome Doctor!</h2>
+	<form method="post">
+		{% csrf_token %}
+		<div class="register">
+			<a href="{% url 'appoint:select' %}">
+				<i class="fas fa-angle-double-left"></i>Back
+			</a>
+		</div><br><br>
+		<label for="name"><b>Username</b></label>
+		<input type="text" placeholder="Enter Username" name="name" id="name" required>
+		<br><br>
+		<label for="pswd"><b>Password</b></label>
+		<input type="password" placeholder="Enter Password" name="pswd" id="pswd" required>
+		<br><br><br>
+		<button type="submit" class="submit btn btn-success">Login</button>
+		<br><br>
+	</form>
+</div>
+{% endblock content %}

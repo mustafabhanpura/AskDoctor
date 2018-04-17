@@ -1,0 +1,53 @@
+/*.appoint{
+	margin: 10px;
+	padding:10px;
+	border: 0.5px solid black;
+	border-style:  solid;
+	border-radius: 15px;
+}*/
+
+.pic {
+	background-color: #6699ff;
+	border-radius: 15% 0 15% 0;
+}
+
+.title{
+	text-align:center; 
+	font-family: georgia,garamond,serif;;
+}
+
+.card{
+	margin: 15px;
+	width: auto;
+	height: 200px;
+	display: flex;
+	box-shadow: 10px 10px 5px grey;
+}
+
+.pos{
+	border:solid 1px grey;
+}
+
+.position {
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.anno{
+	display: inline-block;
+	padding: 10px;
+	float: right;
+}
+
+.nav .nav-item .nav-link {
+	color: #000066;
+}
+
+.nav .nav-item .nav-link:hover {
+	color: black;
+}
+
+.control{}
+/*.position{
+	float: center;
+}*/

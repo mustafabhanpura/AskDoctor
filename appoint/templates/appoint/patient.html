@@ -1,0 +1,5 @@
+{% for q in query %}
+{% if forloop.counter == 3%}
+<h3>{{q.reply}}</h3>
+{% endif %}
+{% endfor %}

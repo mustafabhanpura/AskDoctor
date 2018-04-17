@@ -1,0 +1,51 @@
+{% extends "appoint/base_login.html" %}
+
+{% block content %}
+<div id="patient1">	
+	<form method="post">
+		{% csrf_token %}
+		<h2>Register</h2>
+		<br>
+		<div class="register">
+			<a href="{% url 'appoint:select' %}">
+				<i class="fas fa-angle-double-left"></i>Back
+			</a>
+		</div>
+		<br><br><br>
+		{% for field in user_form %}
+			<div class="form-group">
+					<div>
+						<span class="text-danger la">{{ field.errors }}</span>
+					</div> 
+					<label>{{ field.label_tag }}</label>
+					<div>{{ field }}</div>
+			</div>
+		{% endfor %}
+		{% for field in profile_1 %}
+			<div class="form-group">
+					<div>
+						<span class="text-danger la">{{ field.errors }}</span>
+					</div> 
+					<label>{{ field.label_tag }}</label>
+					<div>{{ field }}</div>
+			</div>
+		{% endfor %}
+<!--		<label for="username"><b>Username</b></label>
+		<input type="text" placeholder="Enter Username" name="username" id="username" required>
+		<br><br>
+		<label for="pass"><b>Password</b></label>
+		<input type="password" placeholder="Enter Password" name="pass" id="pass" required>
+		<br><br>
+		<div class="form-group">
+			<label for="bday"><b>Date of Birth<b></label>
+			<input type="date" name="bday" id="bday" placeholder="Enter DOB" class="form-control">
+		</div>
+		<br>
+		<label for="contact"><b>Contact Number</b></label>
+		<input type="tel" placeholder="Enter contact number" name="contact" id="contact" required>  -->
+		<br><br><br>
+		<button type="submit" class="submit btn btn-danger">Register</button>
+		<br><br>
+	</form>
+</div>
+{% endblock content %}

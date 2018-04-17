@@ -1,0 +1,18 @@
+{% extends "appoint/base_login.html" %}
+
+{% block content %}
+<div class="select-buttons">
+	<form action="{% url 'appoint:login_doctor' %}">
+		{% csrf_token %}
+		<button class="select-button btn btn-dark">Login as Doctor</button>
+	</form>
+	<form action="{% url 'appoint:login_patient' %}">
+		{% csrf_token %}
+		<button class="select-button btn btn-dark">Login as Patient</button>
+	</form>
+<!--	<form action="{% url 'appoint:index' %}">
+		{% csrf_token %}
+		<button class="select-button btn btn-dark">Patient Register</button>
+	</form>		-->
+</div>
+{% endblock content %}
