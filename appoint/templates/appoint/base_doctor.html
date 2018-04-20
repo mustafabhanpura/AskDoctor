@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Page</title>
+	<meta charset="utf-8">
+    {% load staticfiles %}
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'appoint/base.css' %}">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="pic" style="  background-color: #6699ff; border-radius: 15% 0 15% 0;">
+  <div class="top">	
+    <nav class="navbar navbar-light" >
+      <a class="navbar-brand" href="#" style="font-size: 35px;">
+        <img src="/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+        AskDoctor
+      </a>
+      
+      <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link active" style="font-size: 20px;" href="{% url 'appoint:dashboard-d' %}">Home</a>
+        </li>
+<!--         <li class="nav-item">
+          <a class="nav-link" style="font-size: 20px;" href="#">Schedule</a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" style="font-size: 20px;" href="{% url 'appoint:login_doctor' %}">Logout</a>
+        </li>
+        <span class="navbar-text" style="font-size: 20px; margin-left: 40px;">
+          Welcome Doctor
+        </span>
+      </ul>
+    </nav>
+  </div>
+  <br>
+  <div class="title">
+    <h2>
+    	Dashboard
+    </h2>
+  </div>
+  <br>
+</div>
+<br><br><br><br>
+{% block content %}
+{% endblock content %}
+<!--  <div class="control">
+
+  <div class="position">
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </div>
+
+
+
+</div>  -->
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+{% extends "appoint/base_patient.html" %}
+
+{% block content %}
+{% if patient.answer %}
+<div style="margin-left: 50px;">
+	<h2>Your query : </h2>
+	<br>
+	<p>Problem - {{ patient.reply }}</p>
+	<br>
+	<p>Report Image - <img src="{{ patient.report_image.url }}" style="width: 250px; height: 250px"></p>
+	<br><br><br>
+	<h2>Doctor's Solution :</h2>
+	<br>
+	<p>Medicine suggested - {{ patient.medicine }}</p>
+	<br>
+	<p>Doctor's Solution - {{ patient.answer }}</p>
+	<br><br><br>
+</div>
+{% else %}
+<div style="margin-left: 50px;">
+	<h2>Your query : </h2>
+	<br>
+	<p>Problem - {{ patient.reply }}</p>
+	<br>
+	<p>Report Image - <img src="{{ patient.report_image.url }}" style="width: 250px; height: 250px"></p>
+	<br><br><br>
+	<h2>Doctor's Solution :</h2>
+	<br>
+	<p>Reply pending</p>
+	<br><br><br>
+</div>
+{% endif %}
+{% endblock content %}

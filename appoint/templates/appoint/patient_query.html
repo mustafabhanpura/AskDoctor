@@ -1,10 +1,14 @@
+{% extends "appoint/base_patient.html" %}
+
+{% block content %}
 <form method="post" enctype="multipart/form-data">
 	{% csrf_token %}	
 	<label for="query">Enter Query :</label>&nbsp;&nbsp;&nbsp;
-	<textarea name="query" id="query" rows="3" cols="20"></textarea>
+	<textarea name="query" id="query" rows="3" cols="50"></textarea>
 	<br><br><br>
 	<label for="document">Upload your document</label>&nbsp;&nbsp;&nbsp;
 	<input type="file" name="document" id="document" accept="application/pdf, image/*">
 	<br><br>
-	<button type="submit" name="submit">Submit</button>
+	<button type="submit" name="submit" style="margin-left: 50px;">Submit</button>
 </form>
+{% endblock content %}

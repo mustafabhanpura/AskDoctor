@@ -14,25 +14,26 @@
 </head>
 <body>
 
-<div class="pic">
+<div class="pic" style="  background-color: #6699ff; border-radius: 15% 0 15% 0;">
   <div class="top">	
-    <nav class="navbar navbar-light">
-      <a class="navbar-brand" href="#" style="font-size: 25px;">
+    <nav class="navbar navbar-light" >
+      <a class="navbar-brand" href="#" style="font-size: 35px;">
         <img src="/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
-        Bootstrap
+        AskDoctor
       </a>
       
       <ul class="nav justify-content-center">
         <li class="nav-item">
-          <a class="nav-link active" style="font-size: 20px;" href="#">Home</a>
+          <a class="nav-link active" style="font-size: 20px;" href="{% url 'appoint:dashboard-p' %}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" style="font-size: 20px;" href="#">Schedule</a>
+          <a class="nav-link" style="font-size: 20px;" href="{% url 'appoint:about_us' %}">About Us</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" style="font-size: 20px;" href="#">Logout</a>
+          <a class="nav-link" style="font-size: 20px;" href="{% url 'appoint:logout_view' %}">Logout</a>
         </li>
-        <span class="navbar-text" style="font-size: 20px;">
+        &nbsp;&nbsp;&nbsp;
+        <span class="navbar-text" style="font-size: 20px; margin-left: 40px;">
           Welcome User
         </span>
       </ul>
@@ -40,12 +41,13 @@
   </div>
   <br>
   <div class="title">
-    <h1>
+    <h2>
     	Dashboard
-    </h1>
+    </h2>
   </div>
   <br>
 </div>
+<br><br><br><br>
 {% block content %}
 {% endblock content %}
 <!--  <div class="control">

@@ -20,54 +20,39 @@ from django.contrib.auth import authenticate, login, logout
 def home_page(request):
     return render(request,'appoint/base_login.html')
 
-@login_required(login_url='appoint:login_doctor')
-def dashboard_doctor(request):
-    return HttpResponse('<h2>Logged In Successfully Doctor<h2>')
+
+def logout_view(request):
+    logout(request)
+    return redirect('/appoint/login/patient/')
 
 
+def about_us(request):
+    return render(request, 'appoint/about_us.html')
+
+
+@login_required(login_url='appoint:login_user')
 def dashboard_patient(request):
-    if request.user.is_authenticated:
-       return render(request, 'appoint/dashboard_patient.html')
+    return render(request, 'appoint/dashboard_patient.html')
 
 
-
+@login_required(login_url='appoint:login_user')
 def query_p(request):
-    patient_1=SignUp.objects.get(user=request.user)
+    patient_1 = SignUp.objects.get(user=request.user)
     if request.method == 'POST':
-
         name=patient_1
         query=request.POST.get('query')
         report_image = request.FILES.get('document')
         form=Patient.objects.create(patient=name,reply=query,report_image=report_image)
         form.save()
         return redirect('/appoint/dashboard/patient')
-
     return render(request, 'appoint/patient_query.html')
 
 
-def patient_query(request):
-    patient_1=SignUp.objects.get(user=request.user)
-    if request.method == 'POST' and request.FILES['document']:
-        # document = request.FILES['document']
-        # fs = FileSystemStorage()
-        # filename = fs.save(document.name, document)
-        # query_form = Query(request.POST)
-        # if query_form.is_valid():
-        #     query = query_form.save(commit=False)
-        #     reply = query.POST.get('query')
-        #     query.reply = reply
-        #     query.patient = request.user
-        #     query.save()
-        query_form = Query(request.POST, request.FILES)
-        if query_form.is_valid():
-            query = query_form.save(commit=False)
-            query.patient = patient_1
-            query.report_image = request.FILES.get('document')
-            query.reply = request.POST.get('query')
-            query.save() 
-        return redirect('/appoint/dashboard/patient')
-    else:    
-        return render(request, 'appoint/patient_query.html')
+@login_required(login_url='appoint:login_user')
+def reply_status(request):
+    x = SignUp.objects.get(user=request.user)   
+    patient = Patient.objects.get(patient=x)
+    return render(request, 'appoint/check_status.html', {'patient':patient})
 
 
 def select_login(request):
@@ -126,6 +111,7 @@ def login_doctor(request):
     return render(request,'appoint/login_doctor.html')
 
 
+#@login_required(login_url='/appoint/login/doctor/')
 def display_doctor(request):
     dict = {}
     patient = SignUp.objects.all()
@@ -136,10 +122,27 @@ def display_doctor(request):
     return render(request, 'appoint/detail.html', {'dict': dict})
 
 
-def display_query(request):
-    sign=SignUp.objects.all().filter(user=request.user)
-    query=Patient.objects.all().filter(patient=sign[0])
-    return render(request,'appoint/patient.html',{'query':query})
-def reply(request,name_id):
-    rep=Patient.objects.get(pk=name_id)
-    return render(request,'appoint/doctor_view.html',{'rep':rep})
+# def display_doctor(request):
+#     dic={}
+#     for x in User:
+#         dict[x.id]=Patient.objects.get(patient_id=x.id)
+#     profile = SignUp.objects.all()
+#     query = Patient.objects.all()
+#     return render(request, 'appoint/detail.html', {'profile': profile, 'query':query})
+
+
+
+def reply_profile(request,name_id):
+    sign=SignUp.objects.get(id=name_id)
+    return render(request,'appoint/patient_profile.html',{'sign':sign})
+
+def reply_query(request,name_id):
+    doc=Patient.objects.get(id = name_id)
+    if request.method == 'POST':
+        doc.answer=request.POST.get('answer')
+        doc.medicine = request.POST.get('medicine')
+        doc.save()
+        return redirect('/appoint/dashboard/doctor/')
+    else:
+        query=Patient.objects.get(id=name_id)
+        return render(request,'appoint/patient_problem.html',{'query':query})

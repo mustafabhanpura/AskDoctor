@@ -17,4 +17,4 @@ class Profile(forms.ModelForm):
 class Query(forms.ModelForm):
     class Meta:
         model=Patient 
-        fields=('patient','reply','report_image',)
+        exclude = ['medicine','answer']

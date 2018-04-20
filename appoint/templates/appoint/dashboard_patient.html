@@ -1,1 +1,16 @@
-<a href="{% url 'appoint:patient_query' %}" style="text-decoration: none;">Request the doctor</a>
+{% extends "appoint/base_patient.html" %}
+
+{% block content %}
+<!-- 	<a href="{% url 'appoint:patient_query' %}" style="text-decoration: none;">Request the doctor</a> -->
+<center>
+	<form action="{% url 'appoint:patient_query' %}">
+		{% csrf_token %}
+		<button class="select-button btn btn-dark">Request the Doctor</button>
+	</form>
+	<br><br><br>
+	<form action="{% url 'appoint:reply_status' %}">
+		{% csrf_token %}
+		<button class="select-button btn btn-dark">Check status</button>
+	</form>
+</center>
+{% endblock content %}

@@ -1,0 +1,40 @@
+{% extends "appoint/base_doctor.html" %}
+
+{% block content %}
+<h2 style="margin-left: 50px;">Patient Details :</h2>
+<br><br>
+<label for="f_name">First Name</label>&nbsp;&nbsp;&nbsp;
+<input type="text" name="f_name" id="f_name" value="{{ sign.first_name }}" readonly>
+<br><br>
+<label for="l_name">Last Name</label>&nbsp;&nbsp;&nbsp;
+<input type="text" name="l_name" id="l_name" value="{{ sign.last_name }}" readonly>
+<br><br>
+<label for="contact">Contact Number</label>&nbsp;&nbsp;&nbsp;
+<input type="text" name="contact" id="contact" value="{{ sign.contact }}" readonly>
+<br><br>
+<label for="dob">Date of birth</label>&nbsp;&nbsp;&nbsp;
+<input name="dob" id="dob" value="{{ sign.date_of_birth }}" readonly>
+<br><br><br><br>
+<!-- <label for="query">Patient Query</label>&nbsp;&nbsp;&nbsp;
+<input type="text" name="query" id="query" value="{{ query.reply }}" readonly>
+<br>
+<img src="{{ media_url }}{{ query.report_image }}">
+<br><br><br><br>
+
+<form method="post">
+	{% csrf_token %}
+   	<label for="medicine">Suggested Medicine</label>&nbsp;&nbsp;&nbsp;
+    <select id="medicine">
+	    <option>Crocin</option>
+	    <option>Crocin Advanced</option>
+	    <option>Crocin Cold and Flu</option>
+    </select>
+	<br><br>
+	<label for="answer" style="vertical-align: top;">Solution</label>&nbsp;&nbsp;&nbsp;
+	<textarea name="answer" id="answer" rows="3" cols="50"></textarea><br><br><br>
+	<button type="submit" style="margin-left: 10%">Submit</button>
+</form> -->
+
+<!--	<label for="f_name">First Name</label>
+<input type="text" name="f_name" id="f_name" value="{{ sign.first_name }}" readonly>	-->
+{% endblock content %}

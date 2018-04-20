@@ -122,4 +122,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 STATIC_URL = '/static/'
-LOGIN_REDIRECT_URL = 'appoint:home_page'
+
+LOGIN_URL='/path/to/url'
+LOGIN_REDIRECT_URL='/path/to/redirecturl'

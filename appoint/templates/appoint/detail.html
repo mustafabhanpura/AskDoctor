@@ -1,4 +1,4 @@
-{% extends "appoint/base.html" %}
+{% extends "appoint/base_doctor.html" %}
 
 <!--{% for x,y in dict.items %}
  {{x}}<br />
@@ -16,19 +16,21 @@
 
 <div class="position">
     <div class="row">
-      {% for x,y in dict.items %}
-        {% if y  %}
+      {% for a,b in dict.items %}
+      {% if b %}
+      {% for c in b %}
       <div class="col-sm-3">
-        <div class="card">
+        <div class="card" style="height: auto;">
           <div class="card-body">
-            <h5 class="card-title">{{ x.first_name }} {{ x.last_name }}</h5>
-            {% for a in y %}
-            <p class="card-text">{{ a.reply }}</p>
-            {% endfor %}
-            <a href="{%url 'appoint:id' forloop.counter  %}" class="btn btn-primary">Open</a>
+            <h5 class="card-title">{{ a.first_name }} {{ a.last_name }}</h5>
+            <p class="card-text">{{ c.reply }}</p>
+            <a href="{% url 'appoint:id_query' c.id %}" class="btn btn-primary">View Query</a>
+            <br><br>
+            <a href="{% url 'appoint:id_profile' a.id %}" class="btn btn-primary">View Profile</a>
           </div>
         </div>
       </div>
+    {% endfor %}
     {% endif %}
     {% endfor %}
     </div>

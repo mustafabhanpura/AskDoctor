@@ -17,6 +17,8 @@ class Patient(models.Model):
     patient=models.ForeignKey(SignUp,on_delete=models.CASCADE)
     reply=models.TextField(max_length=400)
     report_image=models.FileField(upload_to="report/")
+    medicine = models.CharField(max_length=100)
+    answer = models.TextField(max_length=400)
 
     def __str__(self):
         return self.reply

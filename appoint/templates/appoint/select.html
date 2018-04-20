@@ -6,7 +6,7 @@
 		{% csrf_token %}
 		<button class="select-button btn btn-dark">Login as Doctor</button>
 	</form>
-	<form action="{% url 'appoint:login_patient' %}">
+	<form action="{% url 'appoint:login_user' %}">
 		{% csrf_token %}
 		<button class="select-button btn btn-dark">Login as Patient</button>
 	</form>
