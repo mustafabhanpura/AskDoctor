@@ -20,4 +20,6 @@ urlpatterns = [
    path('detail/', views.display_doctor, name='doc'),
    path('dashboard/doctor/profile/<int:name_id>',views.reply_profile,name='id_profile'),
    path('dashboard/doctor/query/<int:name_id>',views.reply_query,name='id_query'),
+   path('dashoard/clear/',views.clear,name='clear'),
+   path('dashboard/patient/none/',views.none,name='none'),
 ]

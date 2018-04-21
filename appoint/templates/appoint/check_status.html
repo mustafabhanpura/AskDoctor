@@ -14,6 +14,7 @@
 	<p>Medicine suggested - {{ patient.medicine }}</p>
 	<br>
 	<p>Doctor's Solution - {{ patient.answer }}</p>
+	<a href="{% url 'appoint:clear'%}">Done</a>
 	<br><br><br>
 </div>
 {% else %}

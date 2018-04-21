@@ -33,7 +33,7 @@
           <a class="nav-link" style="font-size: 20px;" href="{% url 'appoint:login_doctor' %}">Logout</a>
         </li>
         <span class="navbar-text" style="font-size: 20px; margin-left: 40px;">
-          Welcome Doctor
+         {% block user %} Welcome Doctor{% endblock %}
         </span>
       </ul>
     </nav>
