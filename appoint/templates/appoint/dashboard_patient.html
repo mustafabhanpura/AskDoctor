@@ -1,4 +1,5 @@
 {% extends "appoint/base_patient.html" %}
+{% block user %}Hello,{{user.first_name}}{% endblock %}
 
 {% block content %}
 <!-- 	<a href="{% url 'appoint:patient_query' %}" style="text-decoration: none;">Request the doctor</a> -->

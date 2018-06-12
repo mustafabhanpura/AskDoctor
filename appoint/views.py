@@ -12,6 +12,8 @@ from .forms import Sign, Profile, Query
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
+from django.views.generic.edit import CreateView,UpdateView,DeleteView
+from django.urls import reverse_lazy
 # Create your views here.
 #@login_required(login_url='/login/')
 
@@ -32,7 +34,8 @@ def about_us(request):
 
 @login_required(login_url='appoint:login_user')
 def dashboard_patient(request):
-    return render(request, 'appoint/dashboard_patient.html')
+    sign=SignUp.objects.get(user=request.user)
+    return render(request, 'appoint/dashboard_patient.html',{'user':sign})
 
 
 @login_required(login_url='appoint:login_user')
@@ -47,13 +50,21 @@ def query_p(request):
         return redirect('/appoint/dashboard/patient')
     return render(request, 'appoint/patient_query.html')
 
+def none(request):
+    return render(request,'appoint/none.html')
+
 
 @login_required(login_url='appoint:login_user')
 def reply_status(request):
-    x = SignUp.objects.get(user=request.user)   
-    patient = Patient.objects.get(patient=x)
-    return render(request, 'appoint/check_status.html', {'patient':patient})
+    x = SignUp.objects.get(user=request.user)
+    patient = Patient.objects.filter(patient=x)
 
+    if patient :
+        pat = Patient.objects.get(patient=x)
+        return render(request, 'appoint/check_status.html', {'patient':pat,'x':x})
+    else:
+        return render(request,'appoint/none.html')
+        
 
 def select_login(request):
     return render(request, 'appoint/select.html')
@@ -68,17 +79,13 @@ def index(request):
             user=user_form.save(commit=False)
             username=user_form.cleaned_data['username']
             password=user_form.cleaned_data['password']
-
             user.set_password(password)
-           # user.set_username(username)
             user.save()
-
             profile_1=profile_1.save(commit=False)
             profile_1.user=user
             profile_1.save()
             login(request, authenticate(username=username, password=password))
             return redirect('/appoint/dashboard/patient')
-
     else:
             user_form=Sign()
             profile_1=Profile()
@@ -122,16 +129,6 @@ def display_doctor(request):
     return render(request, 'appoint/detail.html', {'dict': dict})
 
 
-# def display_doctor(request):
-#     dic={}
-#     for x in User:
-#         dict[x.id]=Patient.objects.get(patient_id=x.id)
-#     profile = SignUp.objects.all()
-#     query = Patient.objects.all()
-#     return render(request, 'appoint/detail.html', {'profile': profile, 'query':query})
-
-
-
 def reply_profile(request,name_id):
     sign=SignUp.objects.get(id=name_id)
     return render(request,'appoint/patient_profile.html',{'sign':sign})
@@ -146,3 +143,14 @@ def reply_query(request,name_id):
     else:
         query=Patient.objects.get(id=name_id)
         return render(request,'appoint/patient_problem.html',{'query':query})
+
+
+def clear(request):
+    sign=SignUp.objects.get(user=request.user)
+    Patient.objects.filter(patient=sign).delete()
+    # pat.reply=''
+    # pat.answer=''
+    # pat.report_image=''
+    # pat.save()
+    #pat.delete()
+    return redirect('/appoint/dashboard/patient/')
