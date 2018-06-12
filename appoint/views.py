@@ -57,7 +57,7 @@ def none(request):
 @login_required(login_url='appoint:login_user')
 def reply_status(request):
     x = SignUp.objects.get(user=request.user)
-    patient = Patient.objects.filter(patient=x)
+    patient = Patient.objects.get(patient=x)
 
     if patient :
         pat = Patient.objects.get(patient=x)
@@ -143,6 +143,7 @@ def reply_query(request,name_id):
     else:
         query=Patient.objects.get(id=name_id)
         return render(request,'appoint/patient_problem.html',{'query':query})
+
 
 
 def clear(request):
