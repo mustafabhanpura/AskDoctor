@@ -6,8 +6,7 @@ app_name='appoint'
 
 
 urlpatterns = [
-   path('',views.home_page,name='home_page'),
-   path('select/',views.select_login,name='select'),
+   path('',views.select_login,name='select'),
    path('login/patient/',views.login_user ,name='login_user'),
    path('login/doctor/',views.login_doctor ,name='login_doctor'),
    path('dashboard/patient/query/',views.query_p,name='patient_query'),
